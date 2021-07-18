@@ -30,7 +30,8 @@ export default createStore({
   },
   mutations: {
     SET_CURRENCY(state, currency) {
-      state.currency = JSON.parse(JSON.stringify(currency))
+      state.currency = JSON.parse(JSON.stringify(currency)) //original currency list from API EU to RUB
+      //creating reversed currency list RUB to EU
       state.reversedCurrency = JSON.parse(JSON.stringify(currency))
       for (let key in state.currency) {
         state.reversedCurrency[key].Nominal = 1;
@@ -42,7 +43,6 @@ export default createStore({
         state.currency[key].Difference = (state.currency[key].Value - state.currency[key].Previous).toFixed(4)
         state.currency[key].ValueCode = "RUB"
       }
-      console.log(state.currency);
     },
     SET_COUNTED_VALUE(state, payload) {
       state.countedCurrencyValue =  ((state.currency[payload.majorCode].Value * payload.majorValue) / (state.currency[payload.countedCode].Value/state.currency[payload.countedCode].Nominal)).toFixed(4)

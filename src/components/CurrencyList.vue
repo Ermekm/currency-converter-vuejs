@@ -33,6 +33,7 @@ export default {
     ...mapGetters(["CURRENCY", "REVERSED_CURRENCY"]),
     currency() {
       if (this.isCurrencyReversed) {
+        //Filtered currency list EU to RUB
         return Object.values(this.REVERSED_CURRENCY).filter((currency) => {
           return (
             currency.NumCode.match(this.search) ||
@@ -40,6 +41,7 @@ export default {
           );
         });
       } else {
+         //Filtered reversed currency list RUB to EU
         return Object.values(this.CURRENCY).filter((currency) => {
           return (
             currency.NumCode.match(this.search) ||
