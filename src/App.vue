@@ -1,7 +1,6 @@
 <template>
   <the-header></the-header>
   <main class="test">
-    <!-- <component :is="activeComponent"></component> -->
     <router-view></router-view>
   </main>
 </template>
